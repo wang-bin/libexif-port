@@ -144,7 +144,3 @@ Ns_ModuleInit(char *hServer, char *hModule)
 }
 
 int Ns_ModuleVersion = 1;
-
-
-
-
