@@ -68,7 +68,7 @@ main(int argc, char **argv)
   int i;
 
   exif_init(NULL, NULL, NULL);
-  if (argc < 1) {
+  if (argc < 2) {
     usage();
     exit(1);
   }
