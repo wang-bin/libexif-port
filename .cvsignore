@@ -1,3 +1,5 @@
+configure.scan
+autoscan.log
 *.tar.gz
 Makefile
 Makefile.in
