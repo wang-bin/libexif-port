@@ -125,6 +125,7 @@ jpeg_data_save_data (JPEGData *data, unsigned char **d, unsigned int *ds)
 			break;
 		case JPEG_MARKER_APP1:
 			exif_data_save_data (s.content.app1, &ed, &eds);
+			if (!ed) break;
 			*d = realloc (*d, sizeof (char) * (*ds + 2));
 			(*d)[*ds + 0] = (eds + 2) >> 8;
 			(*d)[*ds + 1] = (eds + 2) >> 0;
@@ -132,6 +133,7 @@ jpeg_data_save_data (JPEGData *data, unsigned char **d, unsigned int *ds)
 			*d = realloc (*d, sizeof (char) * (*ds + eds));
 			memcpy (*d + *ds, ed, eds);
 			*ds += eds;
+			free (ed);
 			break;
 		default:
 			*d = realloc (*d, sizeof (char) *
@@ -416,7 +418,7 @@ jpeg_data_set_exif_data (JPEGData *data, ExifData *exif_data)
 	if (!section) {
 		jpeg_data_append_section (data);
 		memmove (&data->sections[2], &data->sections[1],
-			 sizeof (JPEGSection) * data->count - 2);
+			 sizeof (JPEGSection) * (data->count - 2));
 		section = &data->sections[1];
 	}
 	section->marker = JPEG_MARKER_APP1;
