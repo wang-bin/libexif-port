@@ -1,3 +1,5 @@
+intl
+autom4te.cache
 configure.scan
 autoscan.log
 *.tar.gz
