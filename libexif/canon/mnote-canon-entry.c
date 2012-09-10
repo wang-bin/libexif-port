@@ -30,6 +30,7 @@
 #include <libexif/exif-format.h>
 #include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
+#include "port.h"
 
 /* #define DEBUG */
 

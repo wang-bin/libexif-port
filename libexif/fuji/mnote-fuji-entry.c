@@ -27,6 +27,7 @@
 #include <libexif/i18n.h>
 
 #include "mnote-fuji-entry.h"
+#include "port.h"
 
 #define CF(format,target,v,maxlen)                              \
 {                                                               \

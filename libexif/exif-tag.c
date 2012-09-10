@@ -25,6 +25,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include "port.h"
 
 #define ESL_NNNN { EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED, EXIF_SUPPORT_LEVEL_NOT_RECORDED }
 #define ESL_OOOO { EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL, EXIF_SUPPORT_LEVEL_OPTIONAL }
@@ -877,7 +878,7 @@ static const struct TagEntry {
  * Return the number of entries in the EXIF tag table, including the
  * terminating NULL entry.
  */
-inline unsigned int
+ALWAYS_INLINE unsigned int
 exif_tag_table_count (void)
 {
 	return sizeof (ExifTagTable) / sizeof (ExifTagTable[0]);
@@ -1103,7 +1104,7 @@ exif_tag_from_name (const char *name)
  * \param[in] t a valid data type (not EXIF_DATA_TYPE_UNKNOWN)
  * \return the level of support for this tag
  */
-static inline ExifSupportLevel
+static ALWAYS_INLINE ExifSupportLevel
 get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
 {
 	unsigned int i;
@@ -1133,7 +1134,7 @@ get_support_level_in_ifd (ExifTag tag, ExifIfd ifd, ExifDataType t)
  * \param[in] ifd a valid IFD (not EXIF_IFD_COUNT)
  * \return the level of support for this tag
  */
-static inline ExifSupportLevel
+static ALWAYS_INLINE ExifSupportLevel
 get_support_level_any_type (ExifTag tag, ExifIfd ifd)
 {
 	unsigned int i;

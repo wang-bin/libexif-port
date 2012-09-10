@@ -29,6 +29,7 @@
 #include <libexif/exif-utils.h>
 #include <libexif/exif-entry.h>
 #include <libexif/i18n.h>
+#include "port.h"
 
 #define CF(format,target,v,maxlen)                              \
 {                                                               \

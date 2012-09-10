@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "port.h"
 
 #undef JPEG_MARKER_DHT
 #define JPEG_MARKER_DHT  0xc4

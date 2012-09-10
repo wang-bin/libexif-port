@@ -31,6 +31,7 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+#include "port.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -170,7 +171,7 @@ exif_entry_free (ExifEntry *e)
  * \bug Not all types are converted that could be converted and no indication
  *      is made when that occurs
  */
-static inline ExifShort
+static ALWAYS_INLINE ExifShort
 exif_get_short_convert (const unsigned char *buf, ExifFormat format,
 			ExifByteOrder order)
 {
@@ -839,6 +840,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 	ExifByteOrder o;
 	double d;
 	ExifEntry *entry;
+	unsigned short *utf16;
 	static const struct {
 		char label[5];
 		char major, minor;
@@ -1380,7 +1382,7 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
 
 		/* The tag may not be U+0000-terminated , so make a local
 		   U+0000-terminated copy before converting it */
-		unsigned short *utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
+		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
 		if (!utf16) break;
 		memcpy(utf16, e->data, e->size);
 		utf16[e->size/sizeof(unsigned short)] = 0;
