@@ -22,7 +22,7 @@
 
 #ifndef __EXIF_ENTRY_H__
 #define __EXIF_ENTRY_H__
-
+#include "port.h"
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -77,7 +77,7 @@ struct _ExifEntry {
  *
  * \see exif_entry_new_mem, exif_entry_unref
  */
-ExifEntry  *exif_entry_new     (void);
+Q_EXPORT ExifEntry  *exif_entry_new     (void);
 
 /*! Reserve memory for and initialize new #ExifEntry using the specified
  * memory allocator.
@@ -87,7 +87,7 @@ ExifEntry  *exif_entry_new     (void);
  *
  * \see exif_entry_new, exif_entry_unref
  */
-ExifEntry  *exif_entry_new_mem (ExifMem *);
+Q_EXPORT ExifEntry  *exif_entry_new_mem (ExifMem *);
 
 /*! Increase reference counter for #ExifEntry.
  *
@@ -95,14 +95,14 @@ ExifEntry  *exif_entry_new_mem (ExifMem *);
  *
  * \see exif_entry_unref
  */
-void        exif_entry_ref     (ExifEntry *entry);
+Q_EXPORT void        exif_entry_ref     (ExifEntry *entry);
 
 /*! Decrease reference counter for #ExifEntry.
  * When the reference count drops to zero, free the entry.
  *
  * \param[in] entry #ExifEntry
  */
-void        exif_entry_unref   (ExifEntry *entry);
+Q_EXPORT void        exif_entry_unref   (ExifEntry *entry);
 
 /*! Actually free the #ExifEntry.
  *
@@ -111,7 +111,7 @@ void        exif_entry_unref   (ExifEntry *entry);
  *
  * \param[in] entry EXIF entry
  */
-void        exif_entry_free  (ExifEntry *entry);
+Q_EXPORT void        exif_entry_free  (ExifEntry *entry);
 
 /*! Initialize an empty #ExifEntry with default data in the correct format
  * for the given tag. If the entry is already initialized, this function
@@ -122,7 +122,7 @@ void        exif_entry_free  (ExifEntry *entry);
  * \param[out] e entry to initialize
  * \param[in] tag tag number to initialize as
  */
-void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
+Q_EXPORT void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
 
 /*! Fix the type or format of the given EXIF entry to bring it into spec.
  * If the data for this EXIF tag is in of the wrong type or is in an invalid
@@ -137,7 +137,7 @@ void        exif_entry_initialize (ExifEntry *e, ExifTag tag);
  *
  * \param[in,out] entry EXIF entry
  */
-void        exif_entry_fix        (ExifEntry *entry);
+Q_EXPORT void        exif_entry_fix        (ExifEntry *entry);
 
 
 /* For your convenience */
@@ -160,7 +160,7 @@ void        exif_entry_fix        (ExifEntry *entry);
  * \param[in] maxlen length of the buffer val
  * \return val pointer
  */
-const char *exif_entry_get_value (ExifEntry *entry, char *val,
+Q_EXPORT const char *exif_entry_get_value (ExifEntry *entry, char *val,
 				  unsigned int maxlen);
 
 /*! Dump text representation of #ExifEntry to stdout.
@@ -169,7 +169,7 @@ const char *exif_entry_get_value (ExifEntry *entry, char *val,
  * \param[in] entry EXIF tag data
  * \param[in] indent how many levels deep to indent the data
  */
-void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
+Q_EXPORT void        exif_entry_dump      (ExifEntry *entry, unsigned int indent);
 
 /*! Return the IFD number of the given #ExifEntry
  *

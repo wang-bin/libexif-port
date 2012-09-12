@@ -26,6 +26,7 @@
 #define __EXIF_MEM_H__
 
 #include <libexif/exif-utils.h>
+#include "port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,26 +63,26 @@ typedef struct _ExifMem ExifMem;
  * \param[in] r the reallocator function
  * \param[in] f the free function
  */
-ExifMem *exif_mem_new   (ExifMemAllocFunc a, ExifMemReallocFunc r,
+Q_EXPORT ExifMem *exif_mem_new   (ExifMemAllocFunc a, ExifMemReallocFunc r,
 			 ExifMemFreeFunc f);
 /*! Refcount an ExifMem
  */
-void     exif_mem_ref   (ExifMem *);
+Q_EXPORT void     exif_mem_ref   (ExifMem *);
 
 /*! Unrefcount an ExifMem.
  * If the refcount reaches 0, the ExifMem is freed
  */
-void     exif_mem_unref (ExifMem *);
+Q_EXPORT void     exif_mem_unref (ExifMem *);
 
-void *exif_mem_alloc   (ExifMem *m, ExifLong s);
-void *exif_mem_realloc (ExifMem *m, void *p, ExifLong s);
-void  exif_mem_free    (ExifMem *m, void *p);
+Q_EXPORT void *exif_mem_alloc   (ExifMem *m, ExifLong s);
+Q_EXPORT void *exif_mem_realloc (ExifMem *m, void *p, ExifLong s);
+Q_EXPORT void  exif_mem_free    (ExifMem *m, void *p);
 
 /*! Create a new ExifMem with default values for your convenience
  *
  * \return return a new default ExifMem
  */
-ExifMem *exif_mem_new_default (void);
+Q_EXPORT ExifMem *exif_mem_new_default (void);
 
 #ifdef __cplusplus
 }

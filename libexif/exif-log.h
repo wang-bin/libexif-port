@@ -22,6 +22,7 @@
 
 #ifndef __EXIF_LOG_H__
 #define __EXIF_LOG_H__
+#include "port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,10 +39,10 @@ typedef struct _ExifLog        ExifLog;
  *
  * \return new instance of #ExifLog
  */
-ExifLog *exif_log_new     (void);
-ExifLog *exif_log_new_mem (ExifMem *);
-void     exif_log_ref     (ExifLog *log);
-void     exif_log_unref   (ExifLog *log);
+Q_EXPORT ExifLog *exif_log_new     (void);
+Q_EXPORT ExifLog *exif_log_new_mem (ExifMem *);
+Q_EXPORT void     exif_log_ref     (ExifLog *log);
+Q_EXPORT void     exif_log_unref   (ExifLog *log);
 
 /*! Delete instance of #ExifLog.
  * \see exif_log_new
@@ -49,7 +50,7 @@ void     exif_log_unref   (ExifLog *log);
  * \param[in] log #ExifLog
  * \return new instance of #ExifLog
  */
-void     exif_log_free    (ExifLog *log);
+Q_EXPORT void     exif_log_free    (ExifLog *log);
 
 typedef enum {
 	EXIF_LOG_CODE_NONE,
@@ -63,14 +64,14 @@ typedef enum {
  * \param[in] code logging message class
  * \return textual description of the log class
  */
-const char *exif_log_code_get_title   (ExifLogCode code);
+Q_EXPORT const char *exif_log_code_get_title   (ExifLogCode code);
 
 /*! Return a verbose description of the given class of error log.
  *
  * \param[in] code logging message class
  * \return verbose description of the log class
  */
-const char *exif_log_code_get_message (ExifLogCode code);
+Q_EXPORT const char *exif_log_code_get_message (ExifLogCode code);
 
 /*! Log callback function prototype.
  */
@@ -84,10 +85,10 @@ typedef void (* ExifLogFunc) (ExifLog *log, ExifLogCode, const char *domain,
  * \param[in] func callback function to set
  * \param[in] data data to pass into callback function
  */
-void     exif_log_set_func (ExifLog *log, ExifLogFunc func, void *data);
+Q_EXPORT void     exif_log_set_func (ExifLog *log, ExifLogFunc func, void *data);
 
 #ifndef NO_VERBOSE_TAG_STRINGS
-void     exif_log  (ExifLog *log, ExifLogCode, const char *domain,
+Q_EXPORT void     exif_log  (ExifLog *log, ExifLogCode, const char *domain,
 		    const char *format, ...)
 #ifdef __GNUC__
 			__attribute__((__format__(printf,4,5)))
@@ -103,7 +104,7 @@ void     exif_log  (ExifLog *log, ExifLogCode, const char *domain,
 #endif
 #endif
 
-void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
+Q_EXPORT void     exif_logv (ExifLog *log, ExifLogCode, const char *domain,
 		    const char *format, va_list args);
 
 /* For your convenience */

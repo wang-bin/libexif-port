@@ -22,6 +22,7 @@
 
 #ifndef __EXIF_BYTE_ORDER_H__
 #define __EXIF_BYTE_ORDER_H__
+#include "port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,7 +40,7 @@ typedef enum {
  * \param[in] order byte order
  * \return localized textual name of the byte order
  */
-const char *exif_byte_order_get_name (ExifByteOrder order);
+Q_EXPORT const char *exif_byte_order_get_name (ExifByteOrder order);
 
 #ifdef __cplusplus
 }

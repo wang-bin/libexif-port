@@ -23,6 +23,8 @@
 #ifndef __EXIF_CONTENT_H__
 #define __EXIF_CONTENT_H__
 
+#include "port.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -49,11 +51,11 @@ struct _ExifContent
 };
 
 /* Lifecycle */
-ExifContent *exif_content_new     (void);
-ExifContent *exif_content_new_mem (ExifMem *);
-void         exif_content_ref     (ExifContent *content);
-void         exif_content_unref   (ExifContent *content);
-void         exif_content_free    (ExifContent *content);
+Q_EXPORT ExifContent *exif_content_new     (void);
+Q_EXPORT ExifContent *exif_content_new_mem (ExifMem *);
+Q_EXPORT void         exif_content_ref     (ExifContent *content);
+Q_EXPORT void         exif_content_unref   (ExifContent *content);
+Q_EXPORT void         exif_content_free    (ExifContent *content);
 
 /*! Add an EXIF tag to an IFD.
  * If this tag already exists in the IFD, this function does nothing.
@@ -62,7 +64,7 @@ void         exif_content_free    (ExifContent *content);
  * \param[out] c IFD
  * \param[in] entry EXIF entry to add
  */
-void         exif_content_add_entry    (ExifContent *c, ExifEntry *entry);
+Q_EXPORT void         exif_content_add_entry    (ExifContent *c, ExifEntry *entry);
 
 /*! Remove an EXIF tag from an IFD.
  * If this tag does not exist in the IFD, this function does nothing.
@@ -70,7 +72,7 @@ void         exif_content_add_entry    (ExifContent *c, ExifEntry *entry);
  * \param[out] c IFD
  * \param[in] e EXIF entry to remove
  */
-void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
+Q_EXPORT void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
 
 /*! Return the #ExifEntry in this IFD corresponding to the given tag.
  * This is a pointer into a member of the #ExifContent array and must NOT be
@@ -80,7 +82,7 @@ void         exif_content_remove_entry (ExifContent *c, ExifEntry *e);
  * \param[in] tag EXIF tag to return
  * \return #ExifEntry of the tag, or NULL on error
  */
-ExifEntry   *exif_content_get_entry    (ExifContent *content, ExifTag tag);
+Q_EXPORT ExifEntry   *exif_content_get_entry    (ExifContent *content, ExifTag tag);
 
 /*! Fix the IFD to bring it into specification. Call #exif_entry_fix on
  * each entry in this IFD to fix existing entries, create any new entries
@@ -89,7 +91,7 @@ ExifEntry   *exif_content_get_entry    (ExifContent *content, ExifTag tag);
  *
  * \param[in,out] c EXIF content for an IFD
  */
-void         exif_content_fix          (ExifContent *c);
+Q_EXPORT void         exif_content_fix          (ExifContent *c);
 
 typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
 
@@ -100,7 +102,7 @@ typedef void (* ExifContentForeachEntryFunc) (ExifEntry *, void *user_data);
  * \param[in] func function to call for each entry
  * \param[in] user_data data to pass into func on each call
  */
-void         exif_content_foreach_entry (ExifContent *content,
+Q_EXPORT void         exif_content_foreach_entry (ExifContent *content,
 					 ExifContentForeachEntryFunc func,
 					 void *user_data);
 
@@ -109,7 +111,7 @@ void         exif_content_foreach_entry (ExifContent *content,
  * \param[in] c an #ExifContent*
  * \return IFD number, or #EXIF_IFD_COUNT on error
  */
-ExifIfd exif_content_get_ifd (ExifContent *c);
+Q_EXPORT ExifIfd exif_content_get_ifd (ExifContent *c);
 
 /*! Return a textual representation of the EXIF data for a tag.
  *
@@ -129,14 +131,14 @@ ExifIfd exif_content_get_ifd (ExifContent *c);
  * \param[in] content IFD data
  * \param[in] indent how many levels deep to indent the data
  */
-void exif_content_dump  (ExifContent *content, unsigned int indent);
+Q_EXPORT void exif_content_dump  (ExifContent *content, unsigned int indent);
 
 /*! Set the log message object for this IFD.
  *
  * \param[in] content IFD
  * \param[in] log #ExifLog*
  */
-void exif_content_log   (ExifContent *content, ExifLog *log);
+Q_EXPORT void exif_content_log   (ExifContent *content, ExifLog *log);
 
 #ifdef __cplusplus
 }

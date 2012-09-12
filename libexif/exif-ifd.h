@@ -20,7 +20,7 @@
 
 #ifndef __EXIF_IFD_H__
 #define __EXIF_IFD_H__
-
+#include "port.h"
 /*! Possible EXIF Image File Directories */
 typedef enum {
 	EXIF_IFD_0 = 0,                /*!< */
@@ -38,6 +38,6 @@ typedef enum {
  * \param[in] ifd IFD
  * \return textual name of the IFD
  */
-const char *exif_ifd_get_name (ExifIfd ifd);
+Q_EXPORT const char *exif_ifd_get_name (ExifIfd ifd);
 
 #endif /* __EXIF_IFD_H__ */

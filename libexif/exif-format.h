@@ -23,7 +23,7 @@
 
 #ifndef __EXIF_FORMAT_H__
 #define __EXIF_FORMAT_H__
-
+#include "port.h"
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -49,14 +49,14 @@ typedef enum {
  * \param[in] format EXIF data format
  * \return localized textual name
  */
-const char   *exif_format_get_name (ExifFormat format);
+Q_EXPORT const char   *exif_format_get_name (ExifFormat format);
 
 /*! Return the raw size of the given EXIF data type.
  *
  * \param[in] format EXIF data format
  * \return size in bytes
  */
-unsigned char exif_format_get_size (ExifFormat format);
+Q_EXPORT unsigned char exif_format_get_size (ExifFormat format);
 
 #ifdef __cplusplus
 }

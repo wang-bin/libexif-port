@@ -22,6 +22,7 @@
 
 #ifndef __EXIF_MNOTE_DATA_H__
 #define __EXIF_MNOTE_DATA_H__
+#include "port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,8 +33,8 @@ extern "C" {
 /*! Data found in the MakerNote tag */
 typedef struct _ExifMnoteData ExifMnoteData;
 
-void exif_mnote_data_ref   (ExifMnoteData *);
-void exif_mnote_data_unref (ExifMnoteData *);
+Q_EXPORT void exif_mnote_data_ref   (ExifMnoteData *);
+Q_EXPORT void exif_mnote_data_unref (ExifMnoteData *);
 
 /*! Load the MakerNote data from a memory buffer.
  *
@@ -41,7 +42,7 @@ void exif_mnote_data_unref (ExifMnoteData *);
  * \param[in] buf pointer to raw MakerNote tag data
  * \param[in] buf_siz number of bytes of data at buf
  */
-void exif_mnote_data_load (ExifMnoteData *d, const unsigned char *buf,
+Q_EXPORT void exif_mnote_data_load (ExifMnoteData *d, const unsigned char *buf,
 			   unsigned int buf_siz);
 
 /*!
@@ -53,7 +54,7 @@ void exif_mnote_data_load (ExifMnoteData *d, const unsigned char *buf,
  * \param[out] buf pointer to buffer pointer containing MakerNote data on return
  * \param[out] buf_siz pointer to the size of the buffer
  */
-void exif_mnote_data_save (ExifMnoteData *d, unsigned char **buf,
+Q_EXPORT void exif_mnote_data_save (ExifMnoteData *d, unsigned char **buf,
 			   unsigned int *buf_siz);
 
 /*! Return the number of tags in the MakerNote.
@@ -61,7 +62,7 @@ void exif_mnote_data_save (ExifMnoteData *d, unsigned char **buf,
  * \param[in] d MakerNote data
  * \return number of tags, or 0 if no MakerNote or the type is not supported
  */
-unsigned int exif_mnote_data_count           (ExifMnoteData *d);
+Q_EXPORT unsigned int exif_mnote_data_count           (ExifMnoteData *d);
 
 /*! Return the MakerNote tag number for the tag at the specified index within
  * the MakerNote.
@@ -70,7 +71,7 @@ unsigned int exif_mnote_data_count           (ExifMnoteData *d);
  * \param[in] n index of the entry within the MakerNote data
  * \return MakerNote tag number
  */
-unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
+Q_EXPORT unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
 
 /*! Returns textual name of the given MakerNote tag. The name is a short,
  * unique (within this type of MakerNote), non-localized text string
@@ -80,7 +81,7 @@ unsigned int exif_mnote_data_get_id          (ExifMnoteData *d, unsigned int n);
  * \param[in] n index of the entry within the MakerNote data
  * \return textual name of the tag
  */
-const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
+Q_EXPORT const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
 
 /*! Returns textual title of the given MakerNote tag.
  * The title is a short, localized textual description of the tag.
@@ -89,7 +90,7 @@ const char  *exif_mnote_data_get_name        (ExifMnoteData *d, unsigned int n);
  * \param[in] n index of the entry within the MakerNote data
  * \return textual name of the tag
  */
-const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
+Q_EXPORT const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
 
 /*! Returns verbose textual description of the given MakerNote tag.
  *
@@ -97,7 +98,7 @@ const char  *exif_mnote_data_get_title       (ExifMnoteData *d, unsigned int n);
  * \param[in] n index of the entry within the MakerNote data
  * \return textual description of the tag
  */
-const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
+Q_EXPORT const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
 
 /*! Return a textual representation of the value of the MakerNote entry.
  *
@@ -111,9 +112,9 @@ const char  *exif_mnote_data_get_description (ExifMnoteData *d, unsigned int n);
  * \param[in] maxlen length of the buffer val
  * \return val pointer, or NULL on error
  */
-char  *exif_mnote_data_get_value (ExifMnoteData *d, unsigned int n, char *val, unsigned int maxlen);
+Q_EXPORT char  *exif_mnote_data_get_value (ExifMnoteData *d, unsigned int n, char *val, unsigned int maxlen);
 
-void exif_mnote_data_log (ExifMnoteData *, ExifLog *);
+Q_EXPORT void exif_mnote_data_log (ExifMnoteData *, ExifLog *);
 
 #ifdef __cplusplus
 }

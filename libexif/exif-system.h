@@ -19,7 +19,9 @@
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA  02110-1301  USA.
  */
-
+/*
+  TODO: move macros here
+*/
 #ifndef EXIF_SYSTEM_H
 #define EXIF_SYSTEM_H
 

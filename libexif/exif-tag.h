@@ -22,6 +22,7 @@
 
 #ifndef __EXIF_TAG_H__
 #define __EXIF_TAG_H__
+#include "port.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -206,7 +207,7 @@ typedef enum {
  * \note The tag not found value cannot be distinguished from a legitimate
  *   tag number 0.
  */
-ExifTag          exif_tag_from_name                (const char *name);
+Q_EXPORT ExifTag          exif_tag_from_name                (const char *name);
 
 /*! Return a textual name of the given tag when found in the given IFD. The
  * name is a short, unique, non-localized text string containing only
@@ -216,7 +217,7 @@ ExifTag          exif_tag_from_name                (const char *name);
  * \param[in] ifd IFD
  * \return textual name of the tag, or NULL if the tag is unknown
  */
-const char      *exif_tag_get_name_in_ifd          (ExifTag tag, ExifIfd ifd);
+Q_EXPORT const char      *exif_tag_get_name_in_ifd          (ExifTag tag, ExifIfd ifd);
 
 /*! Return a textual title of the given tag when found in the given IFD.
  * The title is a short, localized description of the tag.
@@ -225,7 +226,7 @@ const char      *exif_tag_get_name_in_ifd          (ExifTag tag, ExifIfd ifd);
  * \param[in] ifd IFD
  * \return textual title of the tag, or NULL if the tag is unknown
  */
-const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
+Q_EXPORT const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
 
 /*! Return a verbose textual description of the given tag when found in the
  * given IFD. The description is a verbose, localized description of the tag.
@@ -234,7 +235,7 @@ const char      *exif_tag_get_title_in_ifd         (ExifTag tag, ExifIfd ifd);
  * \param[in] ifd IFD
  * \return textual description of the tag, or NULL if the tag is unknown
  */
-const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
+Q_EXPORT const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
 
 /*! Return whether the given tag is mandatory or not in the given IFD and
  * data type according to the EXIF specification. If the IFD given is
@@ -248,31 +249,31 @@ const char      *exif_tag_get_description_in_ifd   (ExifTag tag, ExifIfd ifd);
  * \param[in] t data type or EXIF_DATA_TYPE_UNKNOWN
  * \return the level of support for this tag
  */
-ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd,
+Q_EXPORT ExifSupportLevel exif_tag_get_support_level_in_ifd (ExifTag tag, ExifIfd ifd,
                                                     ExifDataType t);
 
 /* Don't use these functions. They are here for compatibility only. */
 
 /*! \deprecated Use #exif_tag_get_name_in_ifd instead */
-const char     *exif_tag_get_name        (ExifTag tag);
+Q_EXPORT const char     *exif_tag_get_name        (ExifTag tag);
 
 /*! \deprecated Use #exif_tag_get_title_in_ifd instead */
-const char     *exif_tag_get_title       (ExifTag tag);
+Q_EXPORT const char     *exif_tag_get_title       (ExifTag tag);
 
 /*! \deprecated Use #exif_tag_get_description_in_ifd instead */
-const char     *exif_tag_get_description (ExifTag tag);
+Q_EXPORT const char     *exif_tag_get_description (ExifTag tag);
 
 
 /* For now, do not use these functions. */
 
 /*! \internal */
-ExifTag      exif_tag_table_get_tag  (unsigned int n);
+Q_EXPORT ExifTag      exif_tag_table_get_tag  (unsigned int n);
 
 /*! \internal */
-const char  *exif_tag_table_get_name (unsigned int n);
+Q_EXPORT const char  *exif_tag_table_get_name (unsigned int n);
 
 /*! \internal */
-unsigned int exif_tag_table_count    (void);
+Q_EXPORT unsigned int exif_tag_table_count    (void);
 
 
 /* Don't use these definitions. They are here for compatibility only. */

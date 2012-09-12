@@ -71,7 +71,7 @@ typedef struct {ExifSLong numerator; ExifSLong denominator;} ExifSRational;
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifShort     exif_get_short     (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifShort     exif_get_short     (const unsigned char *b, ExifByteOrder order);
 
 /*! Retrieve an #ExifSShort value from memory.
  *
@@ -79,7 +79,7 @@ ExifShort     exif_get_short     (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifSShort    exif_get_sshort    (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifSShort    exif_get_sshort    (const unsigned char *b, ExifByteOrder order);
 
 /*! Retrieve an #ExifLong value from memory.
  *
@@ -87,7 +87,7 @@ ExifSShort    exif_get_sshort    (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifLong      exif_get_long      (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifLong      exif_get_long      (const unsigned char *b, ExifByteOrder order);
 
 /*! Retrieve an #ExifSLong value from memory.
  *
@@ -95,7 +95,7 @@ ExifLong      exif_get_long      (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifSLong     exif_get_slong     (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifSLong     exif_get_slong     (const unsigned char *b, ExifByteOrder order);
 
 /*! Retrieve an #ExifRational value from memory.
  *
@@ -103,7 +103,7 @@ ExifSLong     exif_get_slong     (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifRational  exif_get_rational  (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifRational  exif_get_rational  (const unsigned char *b, ExifByteOrder order);
 
 /*! Retrieve an #ExifSRational value from memory.
  *
@@ -111,7 +111,7 @@ ExifRational  exif_get_rational  (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order of raw value
  * \return value
  */
-ExifSRational exif_get_srational (const unsigned char *b, ExifByteOrder order);
+Q_EXPORT ExifSRational exif_get_srational (const unsigned char *b, ExifByteOrder order);
 
 /*! Store an ExifShort value into memory in EXIF format.
  *
@@ -119,7 +119,7 @@ ExifSRational exif_get_srational (const unsigned char *b, ExifByteOrder order);
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_short     (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_short     (unsigned char *b, ExifByteOrder order,
 			 ExifShort value);
 
 /*! Store an ExifSShort value into memory in EXIF format.
@@ -128,7 +128,7 @@ void exif_set_short     (unsigned char *b, ExifByteOrder order,
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_sshort    (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_sshort    (unsigned char *b, ExifByteOrder order,
 			 ExifSShort value);
 
 /*! Store an ExifLong value into memory in EXIF format.
@@ -137,7 +137,7 @@ void exif_set_sshort    (unsigned char *b, ExifByteOrder order,
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_long      (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_long      (unsigned char *b, ExifByteOrder order,
 			 ExifLong value);
 
 /*! Store an ExifSLong value into memory in EXIF format.
@@ -146,7 +146,7 @@ void exif_set_long      (unsigned char *b, ExifByteOrder order,
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_slong     (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_slong     (unsigned char *b, ExifByteOrder order,
 			 ExifSLong value);
 
 /*! Store an ExifRational value into memory in EXIF format.
@@ -155,7 +155,7 @@ void exif_set_slong     (unsigned char *b, ExifByteOrder order,
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_rational  (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_rational  (unsigned char *b, ExifByteOrder order,
 			 ExifRational value);
 
 /*! Store an ExifSRational value into memory in EXIF format.
@@ -164,16 +164,16 @@ void exif_set_rational  (unsigned char *b, ExifByteOrder order,
  * \param[in] order byte order to use
  * \param[in] value data value to store
  */
-void exif_set_srational (unsigned char *b, ExifByteOrder order,
+Q_EXPORT void exif_set_srational (unsigned char *b, ExifByteOrder order,
 			 ExifSRational value);
 
 /*! \internal */
-void exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen);
+Q_EXPORT void exif_convert_utf16_to_utf8 (char *out, const unsigned short *in, int maxlen);
 
 /* Please do not use this function outside of the library. */
 
 /*! \internal */
-void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
+Q_EXPORT void exif_array_set_byte_order (ExifFormat, unsigned char *, unsigned int,
 		ExifByteOrder o_orig, ExifByteOrder o_new);
 
 #undef  MIN

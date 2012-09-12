@@ -41,8 +41,8 @@
 !isEmpty(LIBEXIF_PRI_INCLUDED):error("libexif.pri already included")
 LIBEXIF_PRI_INCLUDED = 1
 
-staticlink = 1  #1 or 0. use static lib or not
-LIB_VERSION = 0.6.21 #0.x.y may be wrong for dll
+staticlink = 0  #1 or 0. use static lib or not
+#LIB_VERSION = 0.6.21 #0.x.y may be wrong for dll
 #QT += network
 
 NAME = exif
@@ -79,6 +79,7 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 	} else {
 		win32 {
 			PRE_TARGETDEPS *= $$PROJECT_LIBDIR/$$qtSharedLib($$NAME, $$LIB_VERSION)
+			message($$PRE_TARGETDEPS)
 		} else {
 			PRE_TARGETDEPS *= $$PROJECT_LIBDIR/$$qtSharedLib($$NAME)
 			unix: QMAKE_RPATHDIR *= $$DESTDIR:$$PROJECT_LIBDIR #executable's dir
