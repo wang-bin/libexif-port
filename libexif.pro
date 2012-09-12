@@ -9,7 +9,7 @@ CONFIG *= exif-buildlib
 PROJECTROOT = $$PWD
 !include(libexif.pri): error(could not find libexif.pri)
 !exists(libexif): error(Could not find libexif source. Put them into $$PWD/libexif)
-!exists(config.h): system(echo > config.h)
+!exists(config.h): system(echo '/**/'> $$PWD/config.h)
 
 DEFINES += GETTEXT_PACKAGE
 HEADERS += \ 
