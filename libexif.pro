@@ -7,6 +7,11 @@ CONFIG   -= app_bundle
 CONFIG *= exif-buildlib
 
 PROJECTROOT = $$PWD
+isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
+isEmpty(BUILD_DIR):BUILD_DIR=$$[BUILD_DIR]
+isEmpty(BUILD_DIR):BUILD_IN_SRC = yes
+
+!isEmpty(BUILD_IN_SRC):BUILD_DIR=$$PROJECTROOT/out
 !include(libexif.pri): error(could not find libexif.pri)
 !exists(libexif): error(Could not find libexif source. Put them into $$PWD/libexif)
 !exists(config.h): system(echo '/**/'> $$PWD/config.h)

@@ -55,8 +55,9 @@ include($${PROJECTROOT}/common.pri)
 CONFIG += depend_includepath #?
 
 PROJECT_SRCPATH = $$PWD/libexif/libexif
-BUILD_DIR=$$(BUILD_DIR)
-isEmpty(BUILD_DIR): BUILD_DIR=$$PWD/..
+isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
+isEmpty(BUILD_DIR):BUILD_DIR=$$[BUILD_DIR]
+isEmpty(BUILD_DIR):BUILD_DIR=$$PWD
 PROJECT_LIBDIR = $$qtLongName($$BUILD_DIR/lib)
 
 #for system include path
@@ -108,7 +109,7 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 	}
 
 	shared {
-		DLLDESTDIR = ../bin #copy shared lib there
+		DLLDESTDIR = $$BUILD_DIR/bin #copy shared lib there
 		CONFIG(release, debug|release):
 			!isEmpty(QMAKE_STRIP): QMAKE_POST_LINK = -$$QMAKE_STRIP $$PROJECT_LIBDIR/$$qtSharedLib($$NAME)
 
