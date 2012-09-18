@@ -6,26 +6,21 @@ port for win msvc etc.
 
 How To Build
 =============
-cd /path/of/libexif-port
 
 msvc or icl:
 =
-set BUILD_DIR=/your/build/dir
+set BUILD_DIR=/dir/to/build (optional)
 
-qmake -r
+qmake
 
 nmake
 
 
 
-*nix or gcc:
+*nix or mingw:
 =
-set BUILD_DIR=/your/build/dir
+export BUILD_DIR=/dir/to/build (optional)
 
 qmake
-
-or 
-
-BUILD_DIR=/your/build/dir qmake -r
 
 make -j4
