@@ -57,7 +57,7 @@ CONFIG += depend_includepath #?
 PROJECT_SRCPATH = $$PWD/libexif/libexif
 isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
 isEmpty(BUILD_DIR):BUILD_DIR=$$[BUILD_DIR]
-isEmpty(BUILD_DIR):BUILD_DIR=$$PWD
+isEmpty(BUILD_DIR):BUILD_DIR=$$OUT_PWD
 PROJECT_LIBDIR = $$qtLongName($$BUILD_DIR/lib)
 
 #for system include path
