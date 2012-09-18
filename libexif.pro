@@ -7,6 +7,7 @@ CONFIG   -= app_bundle
 CONFIG *= exif-buildlib
 
 PROJECTROOT = $$PWD
+include($$PROJECTROOT/deploy.pri)
 isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
 isEmpty(BUILD_DIR):BUILD_DIR=$$[BUILD_DIR]
 isEmpty(BUILD_DIR):BUILD_IN_SRC = yes

@@ -83,7 +83,15 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 			message($$PRE_TARGETDEPS)
 		} else {
 			PRE_TARGETDEPS *= $$PROJECT_LIBDIR/$$qtSharedLib($$NAME)
-			unix: QMAKE_RPATHDIR *= $$DESTDIR:$$PROJECT_LIBDIR #executable's dir
+# $$[QT_INSTALL_LIBS] and $$DESTDIR will be auto added to rpath
+# Current (sub)project dir is auto added to the first value as prefix. e.g. QMAKE_RPATHDIR = .. ==> -Wl,-rpath,ROOT/..
+# Executable dir search: ld -z origin, g++ -Wl,-R,'$ORIGIN', in makefile -Wl,-R,'$$ORIGIN'
+# Working dir search: "."
+# TODO: for macx. see qtcreator/src/rpath.pri. search exe dir first(use QMAKE_LFLAGS = '$$RPATH_FLAG' $$QMAKE_LFLAGS)
+			unix:!macx {
+				QMAKE_RPATHDIR += $$PROJECT_LIBDIR:\'\$\$ORIGIN\':\'\$\$ORIGIN/lib\':.:/usr/local/lib
+				QMAKE_LFLAGS += -Wl,-z,origin
+			}
 		}
 	}
 } else {
@@ -112,19 +120,7 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 		DLLDESTDIR = $$BUILD_DIR/bin #copy shared lib there
 		CONFIG(release, debug|release):
 			!isEmpty(QMAKE_STRIP): QMAKE_POST_LINK = -$$QMAKE_STRIP $$PROJECT_LIBDIR/$$qtSharedLib($$NAME)
-
-		#copy from the pro creator creates.
-		symbian {
-			MMP_RULES += EXPORTUNFROZEN
-			TARGET.UID3 = 0xE4CC8061
-			TARGET.CAPABILITY =
-			TARGET.EPOCALLOWDLLDATA = 1
-			addFiles.sources = $$qtSharedLib($$NAME, $$LIB_VERSION)
-			addFiles.path = !:/sys/bin
-			DEPLOYMENT += addFiles
-		}
 	}
-
 }
 
 unset(LIB_VERSION)
