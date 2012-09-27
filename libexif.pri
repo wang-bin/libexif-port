@@ -43,16 +43,16 @@ LIBEXIF_PRI_INCLUDED = 1
 
 staticlink = 0  #1 or 0. use static lib or not
 #LIB_VERSION = 0.6.21 #0.x.y may be wrong for dll
-#QT += network
+#QT *= network
 
 NAME = exif
-TEMPLATE += fakelib
+TEMPLATE *= fakelib
 PROJECT_TARGETNAME = $$qtLibraryTarget($$NAME)
 TEMPLATE -= fakelib
 
 
 include($${PROJECTROOT}/common.pri)
-CONFIG += depend_includepath #?
+CONFIG *= depend_includepath #?
 
 PROJECT_SRCPATH = $$PWD/libexif/libexif
 isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
@@ -68,7 +68,7 @@ QMAKE_CXXFLAGS *= -isystem $$PROJECT_SRCPATH/..
 INCLUDEPATH *= $$PROJECT_SRCPATH/.. $$PROJECT_SRCPATH $$PWD
 *msvc* | win32-icc: INCLUDEPATH *= $$PWD/win
 DEPENDPATH *= $$PROJECT_SRCPATH
-QMAKE_LFLAGS_RPATH += #will append to rpath dir
+QMAKE_LFLAGS_RPATH *= #will append to rpath dir
 
 !exif-buildlib {
 
@@ -89,14 +89,14 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 # Working dir search: "."
 # TODO: for macx. see qtcreator/src/rpath.pri. search exe dir first(use QMAKE_LFLAGS = '$$RPATH_FLAG' $$QMAKE_LFLAGS)
 			unix:!macx {
-				QMAKE_RPATHDIR += $$PROJECT_LIBDIR:\'\$\$ORIGIN\':\'\$\$ORIGIN/lib\':.:/usr/local/lib
-				QMAKE_LFLAGS += -Wl,-z,origin
+				QMAKE_RPATHDIR *= $$PROJECT_LIBDIR:\'\$\$ORIGIN\':\'\$\$ORIGIN/lib\':.:/usr/local/lib
+				QMAKE_LFLAGS *= -Wl,-z,origin
 			}
 		}
 	}
 } else {
 #Add your additional configuration first
-#	win32: LIBS += -lUser32
+#	win32: LIBS *= -lUser32
 
 
 #The following may not need to change
@@ -112,7 +112,7 @@ QMAKE_LFLAGS_RPATH += #will append to rpath dir
 		CONFIG *= staticlib
 	}
 	else {
-		DEFINES += Q_DLL_LIBRARY #win32-msvc*
+		DEFINES *= Q_DLL_LIBRARY #win32-msvc*
 		CONFIG *= shared #shared includes dll
 	}
 
