@@ -18,7 +18,7 @@ isEmpty(BUILD_DIR):BUILD_IN_SRC = yes
 !exists(config.h): system(echo '/**/'> $$PWD/config.h)
 
 DEFINES += GETTEXT_PACKAGE
-HEADERS += \ 
+HEADERS += port.h \
     libexif/i18n.h \
     libexif/exif-utils.h \
     libexif/exif-tag.h \

@@ -139,7 +139,7 @@
 #  define Q_EXPORT Q_DECL_EXPORT
 #else
 #  undef Q_EXPORT
-#  define Q_EXPORT //Q_DECL_IMPORT //only for vc?
+#  define Q_EXPORT /*Q_DECL_IMPORT only for vc?  */
 #endif
 
 
@@ -202,7 +202,7 @@
 #else
 #define ALWAYS_INLINE inline
 #endif
-#endif //ALWAYS_INLINE
+#endif /* ALWAYS_INLINE */
 
 #ifndef NEVER_INLINE
 #if COMPILER(GCC) && AV_GCC_VERSION_AT_LEAST(3,1)
@@ -212,7 +212,7 @@
 #else
 #define NEVER_INLINE
 #endif
-#endif //NEVER_INLINE
+#endif /* NEVER_INLINE */
 
 #ifndef UNLIKELY
 #if COMPILER(GCC) || (RVCT_VERSION_AT_LEAST(3, 0, 0, 0) && defined(__GNUC__))
@@ -220,7 +220,7 @@
 #else
 #define UNLIKELY(x) (x)
 #endif
-#endif //UNLIKELY
+#endif /* UNLIKELY */
 
 #ifndef LIKELY
 #if COMPILER(GCC) || (RVCT_VERSION_AT_LEAST(3, 0, 0, 0) && defined(__GNUC__))
@@ -228,14 +228,15 @@
 #else
 #define LIKELY(x) (x)
 #endif
-#endif //LIKELY
+#endif /* LIKELY */
 
-#if !defined(ssize_t)
+/*ssize_t is not defined in vc. in mingw gcc 4.4, define again will cause error */
+#if COMPILER(MSVC) && !defined(ssize_t)
 #define ssize_t long
 #endif
 #ifdef Q_OS_WIN
 #define snprintf _snprintf
 #endif
 
-#endif // GLOBAL_H
+#endif /* GLOBAL_H */
 
