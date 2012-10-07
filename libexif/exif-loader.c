@@ -24,7 +24,10 @@
 #include <libexif/exif-utils.h>
 #include <libexif/i18n.h>
 
+#ifdef Q_OS_WINCE
+#else
 #include <sys/types.h>
+#endif /*Q_OS_WINCE*/
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

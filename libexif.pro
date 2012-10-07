@@ -18,6 +18,13 @@ isEmpty(BUILD_DIR):BUILD_IN_SRC = yes
 !exists(config.h): system(echo '/**/'> $$PWD/config.h)
 
 DEFINES += GETTEXT_PACKAGE
+
+*wince* {
+HEADERS += win/ce_time.h
+SOURCES += win/ce_time.c
+SOURCES += win/ce_bsearch.c
+}
+
 HEADERS += port.h \
     libexif/i18n.h \
     libexif/exif-utils.h \

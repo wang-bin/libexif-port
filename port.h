@@ -237,6 +237,12 @@
 #ifdef Q_OS_WIN
 #define snprintf _snprintf
 #endif
+/*
+#ifdef Q_OS_WINCE
+#define time(t) _time64(t)
+#endif
+*/
+/*localtime() missing*/
 
 #endif /* GLOBAL_H */
 
