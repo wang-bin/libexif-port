@@ -54,7 +54,7 @@ TEMPLATE -= fakelib
 include($${PROJECTROOT}/common.pri)
 CONFIG *= depend_includepath #?
 
-PROJECT_SRCPATH = $$PWD/libexif/libexif
+PROJECT_SRCPATH = $$PWD/libexif
 isEmpty(BUILD_DIR):BUILD_DIR=$$(BUILD_DIR)
 isEmpty(BUILD_DIR):BUILD_DIR=$$[BUILD_DIR]
 isEmpty(BUILD_DIR):BUILD_DIR=$$OUT_PWD
